@@ -54,7 +54,7 @@ void radixsort(int arr[], int n)
 
 int main() 
 {
-	int array[1000000], n;
+	int array[1000000], n, c;
 
 	cout << "Enter number of elements" << endl;
 	cin >> n;

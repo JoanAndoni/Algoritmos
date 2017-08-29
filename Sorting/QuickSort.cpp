@@ -61,7 +61,7 @@ void quickSort(int *array, int lo, int hi)
 
 int main() 
 {
-	int array[1000000], n;
+	int array[1000000], n, c;
 
 	cout << "Enter number of elements" << endl;
 	cin >> n;

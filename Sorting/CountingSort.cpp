@@ -34,7 +34,7 @@ void countingSort(int arr[], int sz) {
 
 int main() 
 {
-	int array[1000000], n;
+	int array[1000000], n, c;
 
 	cout << "Enter number of elements" << endl;
 	cin >> n;
@@ -53,7 +53,7 @@ int main()
 
 	cout << "Sorted list in ascending order:\n";
 
-	for (c = 0; c < n; c++)
+	for (int c = 0; c < n; c++)
 		cout << array[c] << endl;
 
 	double dif = difftime(end, start);
