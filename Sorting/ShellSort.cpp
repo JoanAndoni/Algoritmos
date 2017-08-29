@@ -6,27 +6,28 @@
 
 using namespace std;
 
-void shell_sort( int array[], int n )
+void shellSort(int arr[], int n)
 {
-    static constexpr int gap_sequence[] = { 13, 9, 5, 2, 1 } ;
+    int gap, i, j, temp; 
     
-    // for (gap = n/2; gap > 0; gap /= 2)
-    for( int gap : gap_sequence ) if( gap < n )
+    for(gap = n/2; gap > 0; gap = gap/2)
     {
-        // for (i = gap; i < n; i++)
-        for( int i = gap ; i < n; ++i )
-            
-            // for (j=i-gap; j>=0 && v[j]>v[j+gap]; j-=gap)
-            for ( int j = i-gap ; j >= 0 && array[j] > array[j+gap] ; j -= gap )
-            /*
-             temp = v[j];
-             v[j] = v[j+gap];
-             v[j+gap] = temp;
-             */
-                std::swap( array[j], array[j+gap] ) ;
+        for(i = gap; i < n; i++)
+        {
+            for(j = i-gap; j >= 0; j = j-gap)
+            {
+                if(arr[j+gap] >= arr[j])
+                    break; 
+                else
+                {			
+                    temp = arr[j];
+                    arr[j] = arr[j+gap];
+                    arr[j+gap] = temp;
+                }
+            }
+        }
     }
 }
-
 int main() 
 {
 	int array[1000000], n, c;
@@ -42,7 +43,7 @@ int main()
 
 	time(&start); //START THE CLOCK
 
-	shell_sort( array, n );
+	shellSort( array, n );
 
 	time(&end); // STOP THE CLOCK
 
