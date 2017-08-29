@@ -61,7 +61,8 @@ void quickSort(int *array, int lo, int hi)
 
 int main() 
 {
-	int array[1000000], n, c;
+	int* array = new int[1000000];
+    int n, c;
 
 	cout << "Enter number of elements" << endl;
 	cin >> n;
@@ -85,7 +86,7 @@ int main()
 
 	double dif = difftime(end, start);
 
-	cout << "El tiempo de ejecucion fue de: " << dif << " milisegundos" << endl;
+	cout << "El tiempo de ejecucion fue de: " << dif << " segundos" << endl;
 
 	return 0;
 }

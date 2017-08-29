@@ -9,7 +9,8 @@ using namespace std;
 
 int main() 
 {
-	int array[1000000], n, c, d, swap;
+	int* array = new int[1000000];
+	int n, c, d, swap;
 
 	cout << "Enter number of elements" << endl;
 	cin >> n;

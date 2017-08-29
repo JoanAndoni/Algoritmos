@@ -52,7 +52,8 @@ void heapSort(int arr[], int n)
 
 int main() 
 {
-	int array[1000000], n, c;
+	int* array = new int[1000000];
+    int n, c;
 
 	cout << "Enter number of elements" << endl;
 	cin >> n;
