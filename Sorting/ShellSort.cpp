@@ -3,8 +3,10 @@
 #include <cstdlib>
 #include <time.h>
 #include <math.h>
+#include <chrono>
 
 using namespace std;
+using namespace chrono;
 
 void shellSort(int arr[], int n)
 {
@@ -43,9 +45,11 @@ int main()
 		array[c] = (rand() % 1000);       
 
 	time(&start); //START THE CLOCK
+    high_resolution_clock::time_point t1 = high_resolution_clock::now();//Start chrono
 
 	shellSort( array, n );
 
+    high_resolution_clock::time_point t2 = high_resolution_clock::now();//Stop chrono
 	time(&end); // STOP THE CLOCK
 
 	cout << "Sorted list in ascending order:\n";
@@ -53,9 +57,11 @@ int main()
 	for (c = 0; c < n; c++)
 		cout << array[c] << endl;
 
+    auto duration = duration_cast<seconds>(t2 - t1).count(); //Total time
 	double dif = difftime(end, start);
 
-	cout << "El tiempo de ejecucion fue de: " << dif << " milisegundos" << endl;
+    cout << "El tiempo de ejecucion fue de: " << duration << " milisegundos" << endl; //Doesnt work in raspberyPi cause libraries
+	cout << "El tiempo de ejecucion fue de: " << dif << " segundos" << endl;
 
 	return 0;
 }
