@@ -22,7 +22,8 @@ int main()
 	for (c = 0; c < n; c++)
 		array[c] = (rand() % 1000);   
 
-	clock_t cl = clock();    
+	clock_t cl;
+		cl = clock();    
 
 //	time(&start); //START THE CLOCK
 //	high_resolution_clock::time_point t1 = high_resolution_clock::now();//Start chrono
@@ -53,6 +54,8 @@ int main()
 
 //	cout << "El tiempo de ejecucion fue de: " << duration << " milisegundos" << endl; //Doesnt work in raspberyPi cause libraries
 //	cout << "El tiempo de ejecucion fue de: " << dif << " segundos" << endl;
+//	cl = clock() - cl;
+//	printf("%f seconds\n", ((float)cl) / CLOCKS_PER_SEC);
 	cout << "El tiempo de ejecucion fue de: " << (clock()-cl*1000/CLOCKS_PER_SEC) << " ms" << endl;
 
 	return 0;

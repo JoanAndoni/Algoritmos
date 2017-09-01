@@ -55,11 +55,11 @@ int main()
 //  high_resolution_clock::time_point t2 = high_resolution_clock::now();//Stop chrono
 //	time(&end); // STOP THE CLOCK
 
-	cout << "Sorted list in ascending order:\n";
+/*	cout << "Sorted list in ascending order:\n";
 
 	for (c = 0; c < n; c++)
 		cout << array[c] << endl;
-
+	*/
 //  auto duration = duration_cast<seconds>(t2 - t1).count(); //Total time
 //	double dif = difftime(end, start);
 

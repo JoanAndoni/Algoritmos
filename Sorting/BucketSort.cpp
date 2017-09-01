@@ -3,14 +3,16 @@
 #include <cstdlib>
 #include <ctime>
 #include <math.h>
+#define _CRT_SECURE_NO_WARNINGS
+#pragma warning(disable: 4996)
 //#include <chrono> //Doesnt work in raspberyPi cause libraries
 
 using namespace std;
 //using namespace chrono; // Doesnt work in raspberyPi cause libraries
 
-
-void bucketSort(int sarray[], int array_size) {
-    const int max = array_size;
+/*
+void bucketSort(int sarray[], const int array_size) {
+	int max = array_size;
     // use bucket[x][max] to hold the current count
 	int bucket[10][max + 1];
     // init bucket counters
@@ -36,15 +38,16 @@ void bucketSort(int sarray[], int array_size) {
             bucket[x][max] = 0;
         }
     }
-}
+}*/
 
 int main() 
 {
-	int* array = new int[1000000];
-    int n, c;
+	int* array = new int[1000000],  c;
 
-	cout << "Enter number of elements" << endl;
-	cin >> n;
+/*	cout << "Enter number of elements" << endl;
+	cin >> n;*/
+
+	const int n = 10000;
 
 //	time_t start, end;
 
@@ -59,15 +62,43 @@ int main()
 //  high_resolution_clock::time_point t1 = high_resolution_clock::now();//Start chrono
     clock_t cl = clock();
 
-	bucketSort(array, n);
+	const int max = n;
+	// use bucket[x][max] to hold the current count
+	int bucket[10][max + 1];
+	// init bucket counters
+	for (int x = 0; x<10; x++){
+		bucket[x][max] = 0;
+	}
+	// main loop for each digit position
+	for (int digit = 1; digit <= 1000000000; digit *= 10) {
+		// array to bucket
+		for (int i = 0; i < max; i++) {
+			// get the digit 0-9
+			int dig = (array[i] / digit) % 10;
+			// add to bucket and increment count
+			bucket[dig][bucket[dig][max]++] = array[i];
+		}
+		// bucket to array
+		int idx = 0;
+		for (int x = 0; x < 10; x++) {
+			for (int y = 0; y < bucket[x][max]; y++) {
+				array[idx++] = bucket[x][y];
+			}
+			// reset the internal bucket counters
+			bucket[x][max] = 0;
+		}
+	}
+
+//	bucketSort(array, n);
+
 
 //	time(&end); // STOP THE CLOCK
 //  high_resolution_clock::time_point t2 = high_resolution_clock::now();//Stop chrono
 
-//	cout << "Sorted list in ascending order:\n";
+/*	cout << "Sorted list in ascending order:\n";
 
 	for (c = 0; c < n; c++)
-		cout << array[c] << endl;
+		cout << array[c] << endl; */
 
 //    auto duration = duration_cast<seconds>(t2 - t1).count(); //Total time
 //	double dif = difftime(end, start);

@@ -3,43 +3,44 @@
 #include <cstdlib>
 #include <ctime>
 #include <math.h>
+#define _CRT_SECURE_NO_WARNINGS
+#pragma warning(disable: 4996)
 //#include <chrono>
 
 using namespace std;
 //using namespace chrono; // Doesnt work in raspberyPi cause libraries
 
-void cocktailSort(int a[], int n) {
-    bool swapped = true;
-    int start = 0;
-    int end = n-1;
-    
-    while (swapped){
-        swapped = false;
-        
-        for (int i = start; i < end; ++i){
-            if (a[i] > a[i + 1]){
-                swap(a[i], a[i+1]);
-                swapped = true;
-            }
-        }
-        
-        if (!swapped)
-            break;
-        
-        swapped = false;
-        
-        --end;
-        
-        for (int i = end - 1; i >= start; --i){
-            if (a[i] > a[i + 1]){
-                swap(a[i], a[i+1]);
-                swapped = true;
-            }
-        }
-        ++start;
-    }
-}
+void CocktailSort(int vec[],int tam){
+	bool swapped = true;
+	int start = 0;
+	int end = tam - 1;
 
+	while (swapped){
+		swapped = false;
+
+		for (int i = start; i < end; ++i){
+			if (vec[i] > vec[i + 1]){
+				swap(vec[i], vec[i + 1]);
+				swapped = true;
+			}
+		}
+
+		if (!swapped)
+			break;
+
+		swapped = false;
+
+		--end;
+
+		for (int i = end - 1; i >= start; --i){
+			if (vec[i] > vec[i + 1]){
+				swap(vec[i], vec[i + 1]);
+				swapped = true;
+			}
+		}
+		++start;
+	}
+}
 
 int main() 
 {
@@ -59,15 +60,15 @@ int main()
 //    high_resolution_clock::time_point t1 = high_resolution_clock::now();//Start chrono
     clock_t cl = clock();
 
-	cocktailSort(array, n);
+	CocktailSort(array, n);
 
 //    high_resolution_clock::time_point t2 = high_resolution_clock::now();//Stop chrono
 //	time(&end); // STOP THE CLOCK
+	/*
+	cout << "Sorted list in ascending order:\n";
 
-    cout << "Sorted list in ascending order:\n";
-
-    for (int c = 0; c < n; c++)
-    	cout << array[c] << endl;
+	for (int c = 0; c < n; c++)
+    	cout << array[c] << endl;*/
 
 //    auto duration = duration_cast<seconds>(t2 - t1).count(); //Total time
 //	double dif = difftime(end, start);

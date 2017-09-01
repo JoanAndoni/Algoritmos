@@ -21,8 +21,8 @@ int getMax(int arr[], int n)
 void countSort(int arr[], int n, int exp)
 {
     // Count[i] array will be counting the number of array values having that 'i' digit at their (exp)th place.
-    int output[n], i, count[10] = {0};
-    
+    int i, count[10] = {0};
+	int *output = new int[n];
     // Count the number of times each digit occurred at (exp)th place in every input.
     for (i = 0; i < n; i++)
         count[(arr[i] / exp) % 10]++;
@@ -77,11 +77,11 @@ int main()
 //  high_resolution_clock::time_point t2 = high_resolution_clock::now();//Stop chrono
 //	time(&end); // STOP THE CLOCK
 
-	cout << "Sorted list in ascending order:\n";
+/*	cout << "Sorted list in ascending order:\n";
 
 	for (c = 0; c < n; c++)
 		cout << array[c] << endl;
-
+		*/
 //  auto duration = duration_cast<seconds>(t2 - t1).count(); //Total time
 //	double dif = difftime(end, start);
 
