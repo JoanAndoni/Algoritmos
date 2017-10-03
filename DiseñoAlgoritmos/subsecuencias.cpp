@@ -1,4 +1,4 @@
-/* Complejidad = O()
+/* Complejidad = O(T*p) ya que se revisan los dos strings
 
 
 Input:    Text with n characters and Pattern with m characters
