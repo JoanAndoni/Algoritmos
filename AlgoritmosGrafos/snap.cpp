@@ -71,7 +71,8 @@ void bfs(PNGraph * g, int startingNode){
         checking = visiting.top();
         visiting.pop();
         TNEANet::TNodeI NI = g->GetNI(checking);
-        for (int i = 0; i < NI.GetOutDeg(); i++) {
+        for (int i = 0; i < NI.GetOutDeg(); i++) 
+        {
             target = NI.GetOutNId(i);
             if (travelled[target]) continue;
             travelled[target] = true;
@@ -212,10 +213,9 @@ vector<std::tuple<int, int, int>> kruskal (PNGraph * g) {
     return result;
 }
 
-int main(){ //Example Program
-
+int main()
+{
     PNGraph g = TNEANet::New();
-    //Here we are inserting the edges of the graph provided
     insertEdge(1, 3, 8, &g);
     insertEdge(1, 4, 8, &g);
     insertEdge(3, 2, 7, &g);
@@ -240,23 +240,11 @@ int main(){ //Example Program
     insertEdge(12, 14, 9, &g);
     insertEdge(13, 14, 6, &g);
     insertEdge(14, 13, 12, &g);
-    /*
-    insertVertex(g); //Here we insert a vertex
-    insertEdge(1,5,3,g); //Here we insert an edge from vertex 1 to 5 with weight 3
-    deleteVertex(15,g); //Here we delete the vertex 15
-    deleteEdge(1,5,g); //Here we delete the edge going from Vertex 1 to 5.
-    */
-    dfs(&g, 1); //Here we do a depth-first search, that will print the path
-
-    bfs(&g, 1); //Here we do a breath-first search, that will print the path
-
-    vector<pair<int, int>> Prim = prim(&g, 1); //Here we get a vector of pairs, telling us the minimum spanning tree according to prim
-
-    vector<std::tuple<int, int, int>> Kruskal = kruskal(&g); //Here we get a tuple of vertex and int, telling us the minimum spanning tree according to kruskal
-
-    vector<pair<int, int>> Dijkstra = dijkstra(&g,1); //Here we get the minimum distances from certain node to other ones using Dijkstra's algorithm
-
-    vector<vector<int>> FloydWarhsall = floydWarshall(&g); //Here we get the minimum distances from all nodes to other ones using Floyd-Warshall's algorithm
-
+    dfs(&g, 1); 
+    bfs(&g, 1); 
+    vector<pair<int, int>> Prim = prim(&g, 1); 
+    vector<std::tuple<int, int, int>> Kruskal = kruskal(&g); 
+    vector<pair<int, int>> Dijkstra = dijkstra(&g,1); 
+    vector<vector<int>> FloydWarhsall = floydWarshall(&g); 
     return 0;
 }
